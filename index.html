@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Dataset-JSON Hackathon</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mike Stackhouse, Atorus &amp; Eli Miller, Atorus &amp; Ben Straub, GSK &amp; Ben Eric Simms, GSK" />
+    <script src="libs/header-attrs-2.16/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/fc.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/fc-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+    <script src="libs/es6shim-0.35.6/es6shim.js"></script>
+    <script src="libs/es7shim-6.0.0/es7shim.js"></script>
+    <script src="libs/graphre-0.1.3/graphre.js"></script>
+    <script src="libs/nomnoml-1.4.0/nomnoml.js"></script>
+    <script src="libs/nomnoml-binding-0.2.5/nomnoml.js"></script>
+    <link rel="stylesheet" href="www/css/style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: bottom, left, title-slide
+
+.title[
+# Dataset-JSON Hackathon
+]
+.subtitle[
+## Exploration of possibilities in R
+]
+.author[
+### Mike Stackhouse, Atorus &amp; Eli Miller, Atorus &amp; Ben Straub, GSK &amp; Ben Eric Simms, GSK
+]
+.institute[
+### CDISC
+]
+.date[
+### October 2022
+]
+
+---
+
+
+class: middle, center
+
+# Objective
+
+## Present and discuss three R packages: {metacore}, {logrx}, {xportr} and how they fit into the larger framework of the {pharmaverse} answer to the Clinical Reporting Pipeline.
+
+
+&lt;img src="www/img/ctg.png" width="25%" /&gt;
+
+
+
+
+---
+
+class: middle, center
+
+# Outline
+
+&lt;br/&gt;
+
+Defining the Clinical Reporting Pipeline
+
+A collaboration begins between Atorus and GSK
+
+Open Source in a Regulated Environment
+
+Overview of the 3 Packages – {metacore}, {logrx}, {xportr}
+
+Welcome to the {pharmaverse}!
+
+---
+
+# The Clinical Reporting Pipeline
+
+.center[
+<div id="htmlwidget-7a516ac8ec3c5d374ab1" style="width:1000px;height:500px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7a516ac8ec3c5d374ab1">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<frame>Focus on during/after the clinical trials|\n  [Collected|\n  CRFs\n  Lab Assays\n  PK\n  Medical Coding\n]\n\n[Tabulation|\n  SDTM\n  Traceability\n  No derivations\n  Comprehensive\n]\n\n[Analysis Ready|\nADaM\n\"One Proc Away\"\n\"One %>% Away\"\nDerived data\nTraceability\n] \n\n[Results|\nData Displays\nCase Study Report\nSubmission Package\nQuality Control\n]\n\n[Delivery to Agency|\neCTD Portal\n]\n\n[Collected] -> [Tabulation]\n[Tabulation] -> [Analysis Ready]\n[Analysis Ready] -> [Results]\n[Results] -> [Delivery to Agency]\n]","svg":false,"png":null},"evals":[],"jsHooks":[]}</script>
+]
+
+---
+
+![timeline](www/img/project_timeline.png)
+
+---
+
+# Challenges of using an Open-Source Language in a Regulated Environment
+
+.two-column[
+
+  .left-col[
+
+  **An Incomplete List of Challenges** 
+
+  - SAS® processes have years of use within regulatory agencies and tend to take precedence.   
+
+  - Company Firewalls and VPNs.  
+
+  - Sharing of code and data. 
+
+  - Does a R package bend to SAS® processes or does the package recreate/redefine the process?
+
+  - Who maintains the open-source product?
+
+  ]
+
+  .right-col[
+
+  **An Incomplete List of Solutions**
+
+  - Github, Gitlab and etc. help us to share, fix and build up code in an interactive and version-controlled process.
+
+  - R Consortium is working with the FDA to investigate delivering a submission in R.
+
+  - R packages already out there that mimic some of SAS® processes – {haven}, {SASxport}
+
+  - Pharma companies will have a vested interest in maintaining these packages.
+  
+  - New graduates are coming out of school with R and Python skills
+
+  ]
+
+]
+
+
+
+---
+
+# Risk Mitigation: Why xportr pacakge is not on CRAN(yet)
+.two-column[
+
+.left-col[
+
+### Backend dependancy issues
+
+### Limited time from OS developers
+
+### Difficulty Explaining the Need for Changes
+
+]
+
+.right-col[
+- [Dec 11, 2020 - SASxport Issue Reported](https://github.com/r-gregmisc/SASxport/issues/20) 
+
+- [Feb 5, 2021 - PR to SASxport merged in](https://github.com/r-gregmisc/SASxport/pull/21) 
+
+- [Nov 17, 2021 - Issue with haven reported](https://github.com/tidyverse/haven/issues/650) 
+
+- [Nov 23, 2021 - Fix in underlying haven library patched](https://github.com/WizardMac/ReadStat/pull/258) 
+
+- [Feb 21, 2022 - New release for haven backend](https://github.com/WizardMac/ReadStat/releases/tag/v1.1.8-rc0)
+
+- [Feb 25, 2022 - Backend updates made to haven](https://github.com/tidyverse/haven/pull/659) 
+
+- [April 15, 2022 - Updates to haven released and have been implemented into xportr](https://github.com/tidyverse/haven/releases/tag/v2.5.0)
+
+]
+]
+
+---
+
+# {metacore}
+
+.two-column[
+
+.left-col[
+![metacore](www/img/metacore.png)
+]
+
+.right-col[
+**Challenges for R in CRP**
+
+- No available R packages that can ingest and parse metadata for clinical trial datasets or help build a define.xml.
+
+**Solutions**
+
+- Built functions for parsing xml data and other data types specific to clinical trial datasets.
+
+- Functions and objects can be leveraged to help for dataset and variable creation as well as user for creating and codelist and derivations.
+
+**Future development path**
+
+- Working with different company's metadata files as well as in-development packages, e.g., admiral, to leverage metadata upstream or downstream.
+]
+
+]
+
+
+
+---
+
+# {logrx}
+
+.two-column[
+
+.left-col[
+![logrx](www/img/timber_May_2022.png)
+]
+
+.right-col[
+**Challenges for R in CRP**
+
+- There is no SAS-like log file for R-based programs that show traceability and help to create audit-ready code.
+
+**Solutions**
+
+- Created a utilities and wrapper functions to capture user info, session information and warnings and errors in an easy-to-read format.
+
+- Allows for recreation of script, not just the output.
+
+**Future development path**
+
+- Interactive display screen to batch submit multiple programs.
+
+- What else should go in a log?  Companies might have different needs.
+
+- Name changed to logrx - got to be quick!!
+]
+]
+
+---
+
+class: middle, left
+
+# {xportr}
+
+![xportr](www/img/xportr_piped.png)
+
+
+**Challenges for R in CRP**
+
+- Writing a compliant xpt file using haven or other xpt-supported packages is challenging for types, lengths and labels
+
+**Solutions**
+
+- Adding well defined metadata
+- Helps to write compliant xpt files
+- Custom error, warnings and messages for information about metadata
+- Checks on the data before final output
+
+**Future development path**
+
+- How to ingest metadata specifications from different companies and different file formats
+
+---
+
+# 
+
+&lt;iframe src='www/example.html' style="width:100%;height:85%;"/&gt;
+
+---
+
+# 
+
+&lt;iframe src='www/example_with_log.html' style="width:100%;height:85%;"/&gt;
+
+---
+
+# Welcome to the `{pharmaverse}`!
+
+&lt;img src="www/img/pharmaverse.png" style="width:100%;" /&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"slideNumberFormat": "%current%",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

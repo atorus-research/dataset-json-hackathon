@@ -1,0 +1,24 @@
+
+.two-column {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.left-col {
+  width: 600px;
+  padding-top: 10px;
+  padding-right: 40px;
+  margin: auto;
+}
+
+.left-col img {
+  display: block;
+  width: 100%;
+}
+
+.right-col {
+  width: 500px;
+}
+

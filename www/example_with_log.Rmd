@@ -1,0 +1,17 @@
+---
+title: "Create ADSL with Log"
+author: ""
+date: 
+output: 
+   html_document:
+      css: ["example.css"]
+description: "An example of how to generate an ADSL dataset from STDM"
+---
+
+```{r, echo=TRUE, eval=FALSE}
+timber::axecute("example.R")
+```
+
+```{r engine='bash', comment='', echo=FALSE}
+cat example.log
+```

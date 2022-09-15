@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Dela+Gothic+One&display=swap');
+
+:root {
+  --pink: #ff03d7;
+    --green: #cfff00;
+    --yellow: #fffb00;
+}
+
+
+body {
+  font-family: 'Space Mono';
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Dela Gothic One';
+  text-transform: uppercase;
+}
+
+.title {
+  position: absolute;
+  left: 40px;
+  width: 400px;
+  top: 100px;
+}
+
+.title h1 {
+  margin: 0;
+}
+
+.title-prefix {
+  color: var(--green);
+}
+
+.title-suffix {
+  color: black;
+}
+
+.byline {
+  position: absolute;
+  right: 50px;
+  width: 200px;
+  text-align: right;
+  top: 250px;
+}
+
+.authors {
+  color: var(--yellow);
+  font-weight: 800;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li:before {
+  content: "";
+  background: var(--pink);
+  font-weight: bold;
+  font-size: 20px;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-left: -1em;
+  margin-right: 20px;
+}
+
+li {
+  margin-bottom: 60px;
+}
+
+.two-column {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.left-col {
+  width: 300px;
+  padding-top: 10px;
+  padding-right: 40px;
+}
+
+.left-col img {
+  display: block;
+  width: 100%;
+}
+
+.right-col {
+  width: 500px;
+}
+
+.pink {
+  color: var(--pink);
+}
+
+.top-margin-200 {
+  margin-top: 200px;
+}
+
+.top-margin-100 {
+  margin-top: 100px;
+}
+
+.bottom-legend {
+  position: absolute;
+  bottom: 50px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+.right-legend {
+  position: absolute;
+  right: 50px;
+  height: 90%;
+  text-align: center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+.green {
+  color: var(--green);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.problem-title h1 {
+  color: var(--pink);
+  margin: 0;
+  position: absolute;
+  font-size: 30px !important;
+  left: 60px;
+  top: 50px;
+  width: 400px;
+}
+
+.big-list li:before {
+  display: none;
+}
+
+.big-list {
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-family: 'Dela Gothic One';
+}
+
+.big-list li {
+  margin-bottom: 30px;
+  max-width: 800px;
+}
+
+.finale h1 {
+  font-size: 120px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.questions {
+  text-align: center;
+  display: block;
+  font-weight: 900;
+  text-decoration: underline;
+  margin-top: -30px;
+}
+
+.fin-authors.yellow {
+  display: block;
+  text-align: center;
+  margin: auto;
+  width: 600px;
+  margin-top: 250px;
+}
+
+.legend-top {
+  position: absolute;
+  text-align: center;
+  display: block;
+  width: 86%;
+  text-decoration: underline;
+  font-weight: 900;
+  top: 30px;
+}
+
+.top-title h1 {
+  text-align: center;
+  font-size: 100px;
+}

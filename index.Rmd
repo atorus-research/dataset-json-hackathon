@@ -1,0 +1,286 @@
+---
+title: "Dataset-JSON Hackathon"
+subtitle: "Exploration of possibilities in R"
+author: "Mike Stackhouse, Atorus & Eli Miller, Atorus & Ben Straub, GSK & Eric Simms, GSK"
+institute: "CDISC"
+date: "October 2022"
+output:
+  xaringan::moon_reader:
+    css: ['fc','fc-fonts', 'www/css/style.css']
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      titleSlideClass: ["bottom", "left"]
+      slideNumberFormat: "%current%"
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+
+---
+
+class: middle, center
+
+# Objective
+
+## Present and discuss three R packages: {metacore}, {logrx}, {xportr} and how they fit into the larger framework of the {pharmaverse} answer to the Clinical Reporting Pipeline.
+
+
+```{r, echo=FALSE, out.width="25%"}
+knitr::include_graphics("www/img/ctg.png")
+```
+
+
+
+
+---
+
+class: middle, center
+
+# Outline
+
+<br/>
+
+Defining the Clinical Reporting Pipeline
+
+A collaboration begins between Atorus and GSK
+
+Open Source in a Regulated Environment
+
+Overview of the 3 Packages – {metacore}, {logrx}, {xportr}
+
+Welcome to the {pharmaverse}!
+
+---
+
+# The Clinical Reporting Pipeline
+
+.center[
+```{r, echo = FALSE, results = 'asis'}
+nomnoml::nomnoml(
+  "[<frame>Focus on during/after the clinical trials|
+  [Collected|
+  CRFs
+  Lab Assays
+  PK
+  Medical Coding
+]
+
+[Tabulation|
+  SDTM
+  Traceability
+  No derivations
+  Comprehensive
+]
+
+[Analysis Ready|
+ADaM
+\"One Proc Away\"
+\"One %>% Away\"
+Derived data
+Traceability
+] 
+
+[Results|
+Data Displays
+Case Study Report
+Submission Package
+Quality Control
+]
+
+[Delivery to Agency|
+eCTD Portal
+]
+
+[Collected] -> [Tabulation]
+[Tabulation] -> [Analysis Ready]
+[Analysis Ready] -> [Results]
+[Results] -> [Delivery to Agency]
+]",
+width = 1000,
+height = 500
+)
+```
+]
+
+---
+
+![timeline](www/img/project_timeline.png)
+
+---
+
+# Challenges of using an Open-Source Language in a Regulated Environment
+
+.two-column[
+
+  .left-col[
+
+  **An Incomplete List of Challenges** 
+
+  - SAS® processes have years of use within regulatory agencies and tend to take precedence.   
+
+  - Company Firewalls and VPNs.  
+
+  - Sharing of code and data. 
+
+  - Does a R package bend to SAS® processes or does the package recreate/redefine the process?
+
+  - Who maintains the open-source product?
+
+  ]
+
+  .right-col[
+
+  **An Incomplete List of Solutions**
+
+  - Github, Gitlab and etc. help us to share, fix and build up code in an interactive and version-controlled process.
+
+  - R Consortium is working with the FDA to investigate delivering a submission in R.
+
+  - R packages already out there that mimic some of SAS® processes – {haven}, {SASxport}
+
+  - Pharma companies will have a vested interest in maintaining these packages.
+  
+  - New graduates are coming out of school with R and Python skills
+
+  ]
+
+]
+
+
+
+---
+
+# Risk Mitigation: Why xportr pacakge is not on CRAN(yet)
+.two-column[
+
+.left-col[
+
+### Backend dependancy issues
+
+### Limited time from OS developers
+
+### Difficulty Explaining the Need for Changes
+
+]
+
+.right-col[
+- [Dec 11, 2020 - SASxport Issue Reported](https://github.com/r-gregmisc/SASxport/issues/20) 
+
+- [Feb 5, 2021 - PR to SASxport merged in](https://github.com/r-gregmisc/SASxport/pull/21) 
+
+- [Nov 17, 2021 - Issue with haven reported](https://github.com/tidyverse/haven/issues/650) 
+
+- [Nov 23, 2021 - Fix in underlying haven library patched](https://github.com/WizardMac/ReadStat/pull/258) 
+
+- [Feb 21, 2022 - New release for haven backend](https://github.com/WizardMac/ReadStat/releases/tag/v1.1.8-rc0)
+
+- [Feb 25, 2022 - Backend updates made to haven](https://github.com/tidyverse/haven/pull/659) 
+
+- [April 15, 2022 - Updates to haven released and have been implemented into xportr](https://github.com/tidyverse/haven/releases/tag/v2.5.0)
+
+]
+]
+
+---
+
+# {metacore}
+
+.two-column[
+
+.left-col[
+![metacore](www/img/metacore.png)
+]
+
+.right-col[
+**Challenges for R in CRP**
+
+- No available R packages that can ingest and parse metadata for clinical trial datasets or help build a define.xml.
+
+**Solutions**
+
+- Built functions for parsing xml data and other data types specific to clinical trial datasets.
+
+- Functions and objects can be leveraged to help for dataset and variable creation as well as user for creating and codelist and derivations.
+
+**Future development path**
+
+- Working with different company's metadata files as well as in-development packages, e.g., admiral, to leverage metadata upstream or downstream.
+]
+
+]
+
+
+
+---
+
+# {logrx}
+
+.two-column[
+
+.left-col[
+![logrx](www/img/timber_May_2022.png)
+]
+
+.right-col[
+**Challenges for R in CRP**
+
+- There is no SAS-like log file for R-based programs that show traceability and help to create audit-ready code.
+
+**Solutions**
+
+- Created a utilities and wrapper functions to capture user info, session information and warnings and errors in an easy-to-read format.
+
+- Allows for recreation of script, not just the output.
+
+**Future development path**
+
+- Interactive display screen to batch submit multiple programs.
+
+- What else should go in a log?  Companies might have different needs.
+
+- Name changed to logrx - got to be quick!!
+]
+]
+
+---
+
+class: middle, left
+
+# {xportr}
+
+![xportr](www/img/xportr_piped.png)
+
+
+**Challenges for R in CRP**
+
+- Writing a compliant xpt file using haven or other xpt-supported packages is challenging for types, lengths and labels
+
+**Solutions**
+
+- Adding well defined metadata
+- Helps to write compliant xpt files
+- Custom error, warnings and messages for information about metadata
+- Checks on the data before final output
+
+**Future development path**
+
+- How to ingest metadata specifications from different companies and different file formats
+
+---
+
+# 
+
+<iframe src='www/example.html' style="width:100%;height:85%;"/>
+
+---
+
+# 
+
+<iframe src='www/example_with_log.html' style="width:100%;height:85%;"/>
+
+---
+
+# Welcome to the `{pharmaverse}`!
+
+<img src="www/img/pharmaverse.png" style="width:100%;" />
+
