@@ -26,11 +26,8 @@ class: middle, center
 
 
 ```{r, echo=FALSE, out.width="25%"}
-knitr::include_graphics("www/img/ctg.png")
+knitr::include_url("http://json2table.com/#")
 ```
-
-
-
 
 ---
 

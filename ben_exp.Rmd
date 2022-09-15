@@ -1,0 +1,65 @@
+---
+title: "Ben the Explorer"
+output: html_document
+date: "2022-09-15"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(attr.output='style="max-height: 400px; max-width: 1000px;"')
+```
+
+## Setup
+
+Loading in raw DM json file
+
+```{r, message = FALSE}
+library(jsonlite)
+library(dplyr)
+
+dm <- fromJSON(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"), simplifyVector=TRUE)
+```
+
+## The raw
+
+```{r, attr.output='style="max-height: 400px; max-width: 1000px;"'}
+head(dm)
+```
+
+
+## dm to clinicalData to itemGroupData to IG.DM holds the good stuff
+
+```{r}
+
+names(dm$clinicalData$itemGroupData$IG.DM)
+
+```
+
+```{r}
+
+dm$clinicalData$itemGroupData$IG.DM$records
+dm$clinicalData$itemGroupData$IG.DM$name
+dm$clinicalData$itemGroupData$IG.DM$label
+dm$clinicalData$itemGroupData$IG.DM$items
+```
+
+
+```{r, attr.output='style="max-height: 400px;"'}
+dm_raw <- as_tibble(dm$clinicalData$itemGroupData$IG.DM$itemData)
+dm_raw
+```
+
+```{r}
+colnames(dm_raw) <- as.vector(dm$clinicalData$itemGroupData$IG.DM$items$name)
+dm_raw
+```
+
+```{r}
+dm_for_json <- dm_raw
+```
+
+
+
+```{r}
+
+
+```
