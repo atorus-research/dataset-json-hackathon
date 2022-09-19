@@ -16,7 +16,7 @@ Loading in raw DM json file
 library(jsonlite)
 library(dplyr)
 
-dm <- fromJSON(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"), simplifyVector=TRUE)
+dm <- fromJSON(url("https://raw.githubusercontent.com/cdisc-org/DataExchange-DatasetJson/master/examples/sdtm/dm.json"), simplifyVector=TRUE)
 ```
 
 ## The raw
@@ -61,5 +61,6 @@ dm_for_json <- dm_raw
 
 ```{r}
 
+knitr::include_url("https://jsoncrack.com/editor")
 
 ```
