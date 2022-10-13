@@ -4,7 +4,7 @@
 \name{xportrjson-package}
 \alias{xportrjson}
 \alias{xportrjson-package}
-\title{xportrjson: Read and Write JSON file for Clinical Trail Datasets}
+\title{xportrjson: Read and Write JSON files specific to Clinical Trail Datasets}
 \description{
 A proof of concept package created for the Dataset-JSON Hackathon sponsered by CDISC Open Source Alliance. The intention is to explore R's capability to both read and write JSON files that could hold Clinical Trial Data.
 }

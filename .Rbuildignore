@@ -8,3 +8,6 @@ dev
 ^xportrjson.*\.tar\.gz$
 ^xportrjson.*\.tgz$
 ^LICENSE\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

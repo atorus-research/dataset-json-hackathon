@@ -19,6 +19,8 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Imports:
-  tibble
+  tibble,
   jsonlite
+Suggests:
+  knitr
 VignetteBuilder: knitr
