@@ -22,5 +22,6 @@ Imports:
   tibble,
   jsonlite
 Suggests:
-  knitr
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr
