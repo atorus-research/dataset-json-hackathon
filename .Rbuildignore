@@ -1,0 +1,10 @@
+^project\.Rproj$
+^\.Rproj\.user$
+dev
+^project\.Rcheck$
+^project.*\.tar\.gz$
+^project.*\.tgz$
+^xportrjson\.Rcheck$
+^xportrjson.*\.tar\.gz$
+^xportrjson.*\.tgz$
+^LICENSE\.md$

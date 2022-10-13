@@ -1,0 +1,24 @@
+Package: xportrjson
+Title: Read and Write JSON files specific to Clinical Trail Datasets
+Version: 0.1.0
+Authors@R: 
+    c(person("Mike", "Stackhouse", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person("Ben", "Straub", , "first.last@example.com", role = c("aut"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person("Eli", "Miller", , "first.last@example.com", role = c("aut"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person("Eric", "Simms", , "first.last@example.com", role = c("aut"),
+           comment = c(ORCID = "YOUR-ORCID-ID")))
+Description: A proof of concept package created for the Dataset-JSON Hackathon sponsered
+  by CDISC Open Source Alliance.  The intention is to explore R's capability to both read and 
+  write JSON files that could hold Clinical Trial Data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Imports:
+  tibble
+  jsonlite
+VignetteBuilder: knitr
