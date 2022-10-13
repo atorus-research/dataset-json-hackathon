@@ -1,5 +1,5 @@
 ---
-title: "jsonwithadmiral"
+title: "Building ADaMs with SDTM-JSON files"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{jsonwithadmiral}
