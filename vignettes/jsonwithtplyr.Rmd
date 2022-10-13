@@ -1,8 +1,8 @@
 ---
-title: "jsonwithtplyr"
+title: "Building TLFs with JSON-ARDs and Tplyr"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{jsonwithtplyr}
+  %\VignetteIndexEntry{Building TLFs with JSON-ARDs and Tplyr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

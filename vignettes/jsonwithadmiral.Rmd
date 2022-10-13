@@ -2,7 +2,7 @@
 title: "Building ADaMs with SDTM-JSON files"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{jsonwithadmiral}
+  %\VignetteIndexEntry{Building ADaMs with SDTM-JSON files}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
