@@ -31,6 +31,8 @@ type_converter <- function(x) {
 #'
 #' @return A tibble of the Dataset JSON contents
 #'
+#' @export
+#'
 #' @examples
 #'
 #' read_dataset_json(

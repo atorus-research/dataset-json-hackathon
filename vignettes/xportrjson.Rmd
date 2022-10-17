@@ -16,4 +16,6 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(xportrjson)
+
+dm <- read_dataset_json(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"))
 ```
