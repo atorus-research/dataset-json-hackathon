@@ -30,9 +30,10 @@ Below we use the `read_dataset_json` to read into our R session a Demographics d
 
 
 ```{r setup, message = FALSE}
-library(xportrjson)
 library(dplyr)
 library(jsonlite)
+library(xportr)
+library(xportrjson)
 
 dm <- read_dataset_json(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"))
 ```
@@ -50,7 +51,52 @@ attributes(dm$RFXSTDTC)
 To get a better idea of what is in the JSON metadata file for the DM data, lets take a quick look.
 
 ```{r}
-dm <- jsonlite::fromJSON(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"))
+raw_dm <- jsonlite::fromJSON(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"), simplifyVector = TRUE)
 
-dm$clinicalData$itemGroupData[[1]]$items
+head(raw_dm$clinicalData$itemGroupData[[1]]$items, 5)
 ```
+
+```{r}
+meta <- raw_dm$clinicalData$itemGroupData[[1]]$items
+
+  # Pull out the actual data, and convert the character matrix to a dataframe
+dat <- raw_dm$clinicalData$itemGroupData[[1]]$itemData %>%
+    as_tibble(.name_repair="minimal")
+
+  # Apply the variable names onto the dataframe
+  names(dat) <- meta$name
+
+  # Loop over each variable in the dataframe
+  for (i in seq_along(dat)) {
+    # Apply a variable label
+    label(dat[[i]]) <- meta$label[i]
+
+    # Covert the type if it's not a string
+    if (meta$type[i] != "string") {
+      dat[i] <- type_converter(meta$type[i])(dat[[i]])
+    }
+  }
+
+dat
+```
+## Add a new variable to the dataset
+
+We can read in JSON-based dataset, but now we would like to add a new variable and update the metadata associated with this variable.  First, let's add the variable 
+
+```{r}
+metacore <- data.frame(
+  name = c("TRT01P", "TRT01A"),
+  OID = c("IT.ADSL.TRT01P", "IT.ADSL.TRT01A"),
+  length = c(28, 28),
+  type = c("string", "string"),
+  label = c("Planned Treatment for Period 01", "Actual Treatment for Period 01")
+) %>% bind_rows(meta)
+
+adsl <- dm %>%
+  mutate(TRT01P = ARM, TRT01A = ACTARM) %>% 
+  xportr_length(metacore) %>% 
+  xportr_label(metacore)
+
+adsl
+```
+
