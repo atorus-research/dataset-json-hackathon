@@ -4,6 +4,7 @@
 #' convert variable types
 #'
 #' @param x String indicating type in dataset json standard
+#' @export
 type_converter <- function(x) {
   switch(
     x,
@@ -18,6 +19,7 @@ type_converter <- function(x) {
 #'
 #' @param x Variable
 #' @param value Label
+#' @export
 'label<-' <- function(x, value) {
   attr(x, 'label') <- value
   x

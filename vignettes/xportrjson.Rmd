@@ -103,4 +103,6 @@ adsl <- dm %>%
 adsl
 ```
 
-
+```{r}
+toJSON(adsl)
+```
