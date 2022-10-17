@@ -7,15 +7,50 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+## Objectives
+
+1. Read in a dataset-JSON DM file
+2. Add a new variable to the dataset
+3. Update metadata within JSON file
+4. Write out the dataset-JSON file
+
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+library(DT)
 ```
 
-```{r setup}
+## Read in a dataset-JSON DM file
+
+Below we use the `read_dataset_json` to read into our R session a Demographics dataset-JSON file via a url. 
+
+
+```{r setup, message = FALSE}
 library(xportrjson)
+library(dplyr)
+library(jsonlite)
 
 dm <- read_dataset_json(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"))
+```
+
+```{r, echo=FALSE}
+glimpse(dm)
+```
+
+The `read_dataset_json` also reads in the metadata from the JSON file and applies it to the dataframe.  For example, the variable `RFXSTDTC` has the label `Date/Time of First Study Treatment` applied to it.
+ 
+```{r}
+attributes(dm$RFXSTDTC)
+```
+
+To get a better idea of what is in the JSON metadata file for the DM data, lets take a quick look.
+
+```{r}
+dm <- jsonlite::fromJSON(url("https://raw.githubusercontent.com/lexjansen/sas-papers/master/pharmasug-2022/json/sdtm/dm.json"))
+
+dm$clinicalData$itemGroupData[[1]]$items
 ```
