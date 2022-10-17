@@ -84,19 +84,23 @@ dat
 We can read in JSON-based dataset, but now we would like to add a new variable and update the metadata associated with this variable.  First, let's add the variable 
 
 ```{r}
-metacore <- data.frame(
+spec <- data.frame(
   name = c("TRT01P", "TRT01A"),
   OID = c("IT.ADSL.TRT01P", "IT.ADSL.TRT01A"),
   length = c(28, 28),
   type = c("string", "string"),
   label = c("Planned Treatment for Period 01", "Actual Treatment for Period 01")
-) %>% bind_rows(meta)
+) %>% 
+  bind_rows(meta) %>% 
+  rename(variable=name)
+  
 
 adsl <- dm %>%
   mutate(TRT01P = ARM, TRT01A = ACTARM) %>% 
-  xportr_length(metacore) %>% 
-  xportr_label(metacore)
+  xportr_length(spec) %>% 
+  xportr_label(spec)
 
 adsl
 ```
+
 
