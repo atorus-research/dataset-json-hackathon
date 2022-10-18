@@ -71,11 +71,25 @@
 <div class="section level1">
 <h1 id="purpose">Purpose<a class="anchor" aria-label="anchor" href="#purpose"></a>
 </h1>
-<p>This is a proof of concept R package developed for the CDISC Open-Source Alliance (COSA) Hackathon in the Fall of 2022.</p>
+<p>This is a proof of concept R extension package developed for the CDISC Open-Source Alliance (COSA) Hackathon in the Fall of 2022. We envision extending the <a href="https://github.com/atorus-research/xportr" class="external-link">xportr</a> package, which allows users to write out xpt files with an appropriately created specification. The extension would allow users to both read and write JSON files.</p>
 <div class="section level2">
 <h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h2>
-<p>Clinical Programmers and Statisticians need to be able to read in and write out data while working on SDTMs, ADaMs or TLFs. We feel that a simple R package that has the ability to seamlessly read in and write out JSON dataset files will ease this burden of JSON adoption. A Clinical Programmers or Statisticians can then easily use all their current tools within <a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a> and <code>{pharmaverse}</code> packages.</p>
+<p>Clinical Programmers and Statisticians need to be able to read in and write out data while working on SDTMs, ADaMs or TLFs. We feel that a simple R package that has the ability to seamlessly read in and write out JSON dataset files will ease this burden of JSON adoption. A Clinical Programmer or Statistician can then easily use all their current tools within <a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a> and <code>{pharmaverse}</code> packages while working with <code>.sas7bdat</code>, <code>rda</code>, <code>xpt</code> or <code>JSON</code> files in a R session.</p>
+</div>
+<div class="section level2">
+<h2 id="current-scope-of-work">Current Scope of Work<a class="anchor" aria-label="anchor" href="#current-scope-of-work"></a>
+</h2>
+<p>The current work for this extension package is very limited with simple readers and writers created to work with JSON files. A user wishing to use the writer functions will need to create a simple specification file that can apply the type, length and labels for newly created variables.</p>
+</div>
+<div class="section level2">
+<h2 id="future-scope-of-work">Future Scope of Work<a class="anchor" aria-label="anchor" href="#future-scope-of-work"></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>We have some concerns with R’s ability to write out large datasets to JSON. We did not perform any benchmarks analysis or work with any large datasets.</li>
+<li>Develop Unit Testing for functions</li>
+<li>Develop more example to work with <a href="https://github.com/atorus-research/xportr" class="external-link">xportr</a> functions.</li>
+</ol>
 </div>
 <div class="section level2">
 <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a>
