@@ -1,4 +1,4 @@
-#' Title
+#' Helper function to write Item Rows to JSON file
 #'
 #' @param .data
 #'
@@ -10,7 +10,7 @@ write_item_data_rows <- function(.data) {
   for (i in 1:nrow(.data)) {
     # Get the row of the dataframe as a character vector. This pulls out the row
     # as a character vector, which is easy to cat out
-    rw <- unname(unlist(df2[i, ]))
+    rw <- unname(unlist(.data[i, ]))
 
     # write the row
     cat('[')
@@ -19,7 +19,7 @@ write_item_data_rows <- function(.data) {
   }
 }
 
-#' Title
+#' Write Items to JSON file
 #'
 #' @param .data
 #'

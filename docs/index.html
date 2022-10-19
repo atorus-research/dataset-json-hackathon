@@ -8,12 +8,12 @@
 <meta name="description" content="A proof of concept package created for the Dataset-JSON Hackathon sponsered
   by CDISC Open Source Alliance.  The intention is to explore R's capability to both read and 
   write JSON files that could hold Clinical Trial Data.">
-<title>Read and Write JSON files specific to Clinical Trail Datasets • xportrjson</title>
+<title>Read and Write JSON files specific to Clinical Trial Datasets • xportrjson</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Read and Write JSON files specific to Clinical Trail Datasets">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Read and Write JSON files specific to Clinical Trial Datasets">
 <meta property="og:description" content="A proof of concept package created for the Dataset-JSON Hackathon sponsered
   by CDISC Open Source Alliance.  The intention is to explore R's capability to both read and 
   write JSON files that could hold Clinical Trial Data.">
@@ -71,7 +71,7 @@
 <div class="section level1">
 <h1 id="purpose">Purpose<a class="anchor" aria-label="anchor" href="#purpose"></a>
 </h1>
-<p>This is a proof of concept R extension package developed for the CDISC Open-Source Alliance (COSA) Hackathon in the Fall of 2022. We envision extending the <a href="https://github.com/atorus-research/xportr" class="external-link">xportr</a> package, which allows users to write out xpt files with an appropriately created specification. The extension would allow users to both read and write JSON files.</p>
+<p>This is a proof of concept R extension package developed for the CDISC Open-Source Alliance (COSA) Hackathon in the Fall of 2022. We envision extending the <a href="https://github.com/atorus-research/xportr" class="external-link">xportr</a> package, which currently allows users to write out xpt files with an appropriately created specification file. The extension package would allow users to both read and write JSON files while being able to use <a href="https://github.com/atorus-research/xportr" class="external-link">xportr</a> functions to update metadata on the dataset.</p>
 <div class="section level2">
 <h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h2>
@@ -80,21 +80,24 @@
 <div class="section level2">
 <h2 id="current-scope-of-work">Current Scope of Work<a class="anchor" aria-label="anchor" href="#current-scope-of-work"></a>
 </h2>
-<p>The current work for this extension package is very limited with simple readers and writers created to work with JSON files. A user wishing to use the writer functions will need to create a simple specification file that can apply the type, length and labels for newly created variables.</p>
+<p>The current work for this extension package is very limited with simple readers and writers created to work with JSON files. A user wishing to use the writer functions will need to create a simple specification file that can apply the type, length and labels for newly created variables. A user wishing to use the reader functions just needs to find an appropriately made JSON dataset file specific to clinical trial datasets.</p>
 </div>
 <div class="section level2">
 <h2 id="future-scope-of-work">Future Scope of Work<a class="anchor" aria-label="anchor" href="#future-scope-of-work"></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li>We have some concerns with R’s ability to write out large datasets to JSON. We did not perform any benchmarks analysis or work with any large datasets.</li>
-<li>Develop Unit Testing for functions</li>
-<li>Develop more example to work with <a href="https://github.com/atorus-research/xportr" class="external-link">xportr</a> functions.</li>
+<li>Finish write functions for JSON files.</li>
+<li>Develop Unit Testing for functions.</li>
+<li>Develop more examples to work with <a href="https://github.com/atorus-research/xportr" class="external-link">xportr</a> functions.</li>
+<li>Explore why <code>xportr_type()</code> function is not working.</li>
+<li>Develop more examples to show working with datasets using packages like <a href="https://pharmaverse.github.io/admiral/" class="external-link">admiral</a>.</li>
 </ol>
 </div>
 <div class="section level2">
 <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a>
 </h2>
-<p><a href="https://wiki.cdisc.org/display/DSJSONHACK/Dataset-JSON+Hackathon+Home" class="external-link">Dataset-JSON HAckathon</a></p>
+<p><a href="https://wiki.cdisc.org/display/DSJSONHACK/Dataset-JSON+Hackathon+Home" class="external-link">Dataset-JSON Hackathon</a></p>
 </div>
 </div>
 

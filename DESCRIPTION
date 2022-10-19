@@ -1,5 +1,5 @@
 Package: xportrjson
-Title: Read and Write JSON files specific to Clinical Trail Datasets
+Title: Read and Write JSON files specific to Clinical Trial Datasets
 Version: 0.1.0
 Authors@R: 
     c(person("Mike", "Stackhouse", , "first.last@example.com", role = c("aut", "cre"),

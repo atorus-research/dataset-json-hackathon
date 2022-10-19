@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_dataset_json.R
 \name{write_item_data}
 \alias{write_item_data}
-\title{Title}
+\title{Write Items to JSON file}
 \usage{
 write_item_data(.data)
 }
@@ -10,7 +10,7 @@ write_item_data(.data)
 \item{.data}{}
 }
 \description{
-Title
+Write Items to JSON file
 }
 \examples{
 write_item_data(df)

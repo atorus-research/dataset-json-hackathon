@@ -56,55 +56,54 @@ raw_dm <- jsonlite::fromJSON(url("https://raw.githubusercontent.com/lexjansen/sa
 head(raw_dm$clinicalData$itemGroupData[[1]]$items, 5)
 ```
 
+## Update metadata within JSON file
+
+The JSON file has the metadata associated with the JSON dataset.  If we would like to add variables to the JSON file while using R we will need to do three tasks.
+
+1) Pull out current metadata for DM dataset
+2) Add new variable metadata
+
+### Pull out current metadata for DM dataset
+
 ```{r}
-meta <- raw_dm$clinicalData$itemGroupData[[1]]$items
+metadata_current <- raw_dm$clinicalData$itemGroupData[[1]]$items
 
-  # Pull out the actual data, and convert the character matrix to a dataframe
-dat <- raw_dm$clinicalData$itemGroupData[[1]]$itemData %>%
-    as_tibble(.name_repair="minimal")
-
-  # Apply the variable names onto the dataframe
-  names(dat) <- meta$name
-
-  # Loop over each variable in the dataframe
-  for (i in seq_along(dat)) {
-    # Apply a variable label
-    label(dat[[i]]) <- meta$label[i]
-
-    # Covert the type if it's not a string
-    if (meta$type[i] != "string") {
-      dat[i] <- type_converter(meta$type[i])(dat[[i]])
-    }
-  }
-
-dat
+head(metadata_current, 5)
 ```
-## Add a new variable to the dataset
 
-We can read in JSON-based dataset, but now we would like to add a new variable and update the metadata associated with this variable.  First, let's add the variable 
+### Add new variable metadata
 
 ```{r}
-spec <- data.frame(
+metadata_updated <- data.frame(
   name = c("TRT01P", "TRT01A"),
   OID = c("IT.ADSL.TRT01P", "IT.ADSL.TRT01A"),
   length = c(28, 28),
   type = c("string", "string"),
   label = c("Planned Treatment for Period 01", "Actual Treatment for Period 01")
 ) %>% 
-  bind_rows(meta) %>% 
+  bind_rows(metadata_current) %>% 
   rename(variable=name)
-  
-
-adsl <- dm %>%
-  mutate(TRT01P = ARM, TRT01A = ACTARM) %>% 
-  xportr_length(spec) %>% 
-  xportr_label(spec)
-
-adsl
 ```
 
-## Write out a updated JSON
+
+## Add a new variable to the dataset
+
+Now we would like to add a new variable and update the metadata associated with this variable on the R dataframe.  We will use the `{xportr}` functions to apply the length and label to the R dataframe.
+
+```{r, message = FALSE, warning = FALSE}
+adsl <- dm %>%
+  mutate(TRT01P = ARM, TRT01A = ACTARM) %>% 
+  xportr_length(metadata_updated) %>% 
+  xportr_label(metadata_updated)
+
+attributes(adsl$TRT01P)
+```
+
+## Write out an updated JSON (To finish)
+
+TODO: Figure out how to put together updated metadata and data into one JSON file
+TODO: Write out and archive somewhere accessible.
 
 ```{r}
-toJSON(adsl)
+write_item_data(adsl)
 ```

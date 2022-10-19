@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_dataset_json.R
 \name{write_item_data_rows}
 \alias{write_item_data_rows}
-\title{Title}
+\title{Helper function to write Item Rows to JSON file}
 \usage{
 write_item_data_rows(.data)
 }
@@ -10,5 +10,5 @@ write_item_data_rows(.data)
 \item{.data}{}
 }
 \description{
-Title
+Helper function to write Item Rows to JSON file
 }
